@@ -86,6 +86,14 @@ bioguard/
 
 ## Autor
 
-**Seu Nome**
-UNINASSAU
-Projeto apresentado em: *nome do evento, 2026*
+1. Arthur Moraes de Souza  (01866154)
+2. Leonardo Ibrahim (01773992) S.I
+3. Ana Gabriela Ferreira de Souza (01888284) C.C
+4. Fábio Renan Gomes Lourenço da Silva (01877026) SI
+5. João Victor barros vila nova (01895901) C.C
+6. Carlos Eduardo de Vasconcelos Luis (01904246) C.C
+7. Diego Bulhões de Assis (11030139) ADS
+8. Daniel veiga Fernandes da luz (01943991) ADS
+9. ⁠Richarlyson Lucas Xavier de Araujo Melo (01887842) ADS
+
+*Projeto apresentado em: Ideathon, 10/2026*
