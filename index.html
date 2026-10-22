@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>BioGuard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@75..150,500..900&family=Public+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="top" aria-label="Seções">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><i aria-hidden="true"></i>BIOGUARD</a>
+    <ul>
+      <li><a href="#problema">O problema</a></li>
+      <li><a href="#como">Como a IA ajuda</a></li>
+      <li><a href="#mapa">Mapa</a></li>
+      <li><a href="#especies">Espécies</a></li>
+      <li><a href="#demo">Demonstração</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Projeto acadêmico · IA para conservação · Pernambuco</p>
+      <h1 style="margin-top:14px">Onde estão os últimos?<em>IA a serviço do IBAMA</em></h1>
+      <p class="lede">Câmeras na mata, microfones na Caatinga e satélites sobre o litoral geram mais dados do que qualquer equipe consegue analisar. A inteligência artificial filtra esse volume e aponta, no mapa, onde estão os animais ameaçados de Pernambuco e onde eles correm mais risco.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#mapa">Ver o mapa de detecções</a>
+        <a class="btn ghost" href="#demo">Testar o classificador</a>
+      </div>
+    </div>
+    <figure class="trap" style="margin:0" aria-label="Simulação de uma armadilha fotográfica com detecção automática">
+      <canvas id="heroCanvas" width="480" height="360"></canvas>
+      <div class="hud"><span class="rec">CT-07 · Mata do Sirinhaém</span><span id="heroClock">02:14:09</span></div>
+      <div class="hud"><span>IA: macaco-prego-galego</span><span style="color:#8FE0B0">94% conf.</span></div>
+    </figure>
+  </div>
+</header>
+
+<section id="problema">
+  <div class="wrap two">
+    <div class="stack">
+      <p class="eyebrow">O problema</p>
+      <h2>Muita mata, pouca gente, tempo curto</h2>
+      <p class="lede">Pernambuco reúne quatro ambientes muito diferentes, cada um com espécies que só existem ali ou que estão desaparecendo. Monitorar tudo isso a pé é lento e caro. Quando a informação chega, muitas vezes o habitat já foi perdido.</p>
+      <p>O IBAMA atua na fiscalização ambiental, no combate ao tráfico de animais silvestres e no recebimento de animais apreendidos nos CETAS. O ICMBio cuida das unidades de conservação e dos planos de ação para espécies ameaçadas. A proposta é dar às duas equipes uma ferramenta que diga <strong>onde olhar primeiro</strong>.</p>
+    </div>
+    <div class="facts" role="list">
+      <div class="fact" role="listitem"><b>Mata Atlântica</b><span>Restam fragmentos isolados na Zona da Mata. Abriga o macaco-prego-galego e aves que só ocorrem no Centro de Endemismo Pernambuco.</span></div>
+      <div class="fact" role="listitem"><b>Caatinga</b><span>Bioma exclusivamente brasileiro, ocupa o Agreste e o Sertão. Casa do tatu-bola, mascote da Copa de 2014.</span></div>
+      <div class="fact" role="listitem"><b>Litoral</b><span>Praias de desova de tartarugas marinhas, como em Ipojuca, e estuários usados pelo peixe-boi-marinho.</span></div>
+      <div class="fact" role="listitem"><b>Fernando de Noronha</b><span>Arquipélago com tartarugas, golfinhos-rotadores e espécies endêmicas sob forte pressão turística.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="como">
+  <div class="wrap">
+    <p class="eyebrow">Como a IA ajuda</p>
+    <h2 style="margin-top:10px">Do sensor à equipe em campo</h2>
+    <p class="lede" style="margin-top:16px">O sistema funciona em quatro etapas. Cada uma usa técnicas de IA que já existem e são usadas em projetos de conservação pelo mundo.</p>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Coletar</h3><p>Armadilhas fotográficas, gravadores de som, drones e imagens de satélite registram a mata dia e noite.</p><span class="tools">câmeras · gravadores · drones · satélite</span></div>
+      <div class="step"><span class="n">2</span><h3>Detectar</h3><p>Redes neurais de visão computacional descartam fotos vazias e identificam a espécie. Modelos de áudio reconhecem cantos de aves e vocalizações.</p><span class="tools">visão computacional · bioacústica</span></div>
+      <div class="step"><span class="n">3</span><h3>Mapear</h3><p>As detecções viram pontos no mapa. Modelos de distribuição cruzam clima, vegetação e desmatamento para prever onde a espécie ainda pode estar.</p><span class="tools">modelos de distribuição · sensoriamento remoto</span></div>
+      <div class="step"><span class="n">4</span><h3>Agir</h3><p>Alertas priorizam áreas com espécie ameaçada e sinal de desmatamento, queimada ou caça. O IBAMA direciona a fiscalização.</p><span class="tools">painel de alertas · rotas de fiscalização</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="mapa">
+  <div class="wrap">
+    <p class="eyebrow">Painel do protótipo</p>
+    <h2 style="margin-top:10px">Mapa de detecções em Pernambuco</h2>
+    <p class="lede" style="margin-top:16px">Cada ponto é uma área de ocorrência conhecida. Os pulsos laranja mostram detecções que a IA confirmaria em tempo real. Clique numa espécie para destacá-la.</p>
+    <div class="map-grid">
+      <div>
+        <div class="map-box"><svg id="map" viewBox="0 0 1000 400" role="img" aria-label="Mapa esquemático de Pernambuco com pontos de ocorrência de espécies ameaçadas"></svg></div>
+        <div class="legend">
+          <span><i style="background:var(--cr)"></i>Criticamente em perigo (CR)</span>
+          <span><i style="background:var(--en)"></i>Em perigo (EN)</span>
+          <span><i style="background:var(--vu)"></i>Vulnerável (VU)</span>
+          <span><i style="background:var(--colete);border-radius:50%"></i>Nova detecção</span>
+        </div>
+      </div>
+      <div class="feed" aria-live="polite">
+        <header><span>FEED DE DETECÇÕES</span><span class="mono" id="count">0 eventos</span></header>
+        <ol id="feedList"></ol>
+        <p class="note">Dados simulados para demonstração. Em produção, cada evento viria de um sensor real e seria revisado por um especialista.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="especies">
+  <div class="wrap">
+    <p class="eyebrow">Quem estamos procurando</p>
+    <h2 style="margin-top:10px">Espécies ameaçadas em Pernambuco</h2>
+    <p class="lede" style="margin-top:16px">Categorias segundo a Lista Nacional de Espécies Ameaçadas (Portaria MMA nº 148/2022). Para cada animal, o tipo de sensor e de IA mais adequado.</p>
+    <div class="filters" role="group" aria-label="Filtrar por ambiente">
+      <button class="chip" aria-pressed="true" data-f="todos">Todos</button>
+      <button class="chip" aria-pressed="false" data-f="Mata Atlântica">Mata Atlântica</button>
+      <button class="chip" aria-pressed="false" data-f="Caatinga">Caatinga</button>
+      <button class="chip" aria-pressed="false" data-f="Marinho">Litoral e mar</button>
+    </div>
+    <div class="species" id="speciesGrid"></div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <p class="eyebrow">Demonstração interativa</p>
+    <h2 style="margin-top:10px">Como a IA lê uma foto de armadilha</h2>
+    <p class="lede" style="margin-top:16px">Escolha uma captura noturna e veja o modelo localizar o animal e estimar a espécie. A maioria das fotos de armadilha sai vazia, e descartá-las já poupa semanas de trabalho.</p>
+    <div class="demo">
+      <div>
+        <div class="samples" role="group" aria-label="Capturas de exemplo">
+          <button class="chip" aria-pressed="true" data-s="macaco">Captura 1</button>
+          <button class="chip" aria-pressed="false" data-s="tatu">Captura 2</button>
+          <button class="chip" aria-pressed="false" data-s="gato">Captura 3</button>
+          <button class="chip" aria-pressed="false" data-s="vazio">Captura 4</button>
+        </div>
+        <figure class="trap" style="margin:0">
+          <canvas id="demoCanvas" width="640" height="480"></canvas>
+          <div class="hud"><span id="demoMeta">CT-12 · 03:41 · 23°C</span><span id="demoStatus" class="rec">aguardando</span></div>
+        </figure>
+        <div class="hero-actions"><button class="btn" id="runBtn">Analisar com IA</button></div>
+      </div>
+      <div>
+        <h3>Resultado do modelo</h3>
+        <div class="bars" id="bars" style="margin-top:16px"></div>
+        <div class="verdict" id="verdict"><p>Clique em <strong>Analisar com IA</strong> para ver a classificação.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="impacto">
+  <div class="wrap">
+    <p class="eyebrow">Impacto esperado</p>
+    <h2 style="margin-top:10px">O que muda para quem está em campo</h2>
+    <div class="impact">
+      <div><h3>Triagem automática</h3><p>Milhares de fotos e horas de áudio passam primeiro pela IA. Os técnicos revisam só o que importa.</p></div>
+      <div><h3>Fiscalização direcionada</h3><p>Áreas com espécie ameaçada e alerta de desmatamento sobem na lista de prioridades do IBAMA.</p></div>
+      <div><h3>Ciência aberta</h3><p>Os registros validados alimentam bases públicas e ajudam a atualizar a lista de espécies ameaçadas.</p></div>
+    </div>
+    <div class="caveat">
+      <h3>Limites que precisamos considerar</h3>
+      <p style="margin-top:8px">A IA erra, principalmente com espécies raras, que têm poucas fotos para treinar. Por isso toda detecção de espécie ameaçada passa por revisão humana. A localização exata de animais raros também é dado sensível: se vazar, pode ajudar caçadores e traficantes. O acesso aos pontos precisos fica restrito às equipes autorizadas.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap cols">
+    <div>
+      <p><strong style="color:var(--ink)">BioGuard</strong> · protótipo acadêmico apresentado em evento universitário. Projeto conceitual, sem vínculo oficial com o IBAMA ou o ICMBio.</p>
+      <p style="margin-top:8px">Mapa esquemático e detecções simuladas.</p>
+    </div>
+    <div>
+      <strong style="color:var(--ink)">Ferramentas e fontes reais citadas</strong>
+      <ul>
+        <li>SALVE / ICMBio: avaliação do risco de extinção da fauna</li>
+        <li>MegaDetector e Wildlife Insights: IA para armadilhas fotográficas</li>
+        <li>BirdNET (Cornell Lab): identificação de aves pelo canto</li>
+        <li>MapBiomas Alerta: desmatamento por satélite</li>
+        <li>Projeto Tamar e CMA/ICMBio: tartarugas e peixe-boi</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
