@@ -95,5 +95,3 @@ bioguard/
 7. Diego Bulhões de Assis (11030139) ADS
 8. Daniel veiga Fernandes da luz (01943991) ADS
 9. ⁠Richarlyson Lucas Xavier de Araujo Melo (01887842) ADS
-
-*Projeto apresentado em: Ideathon, 10/2026*
