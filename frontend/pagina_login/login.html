@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Entrar · BioGuard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@75..150,500..900&family=Public+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body class="login">
+<main class="card">
+  <svg class="avatar" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true">
+    <circle cx="48" cy="48" r="44"/><circle cx="48" cy="38" r="12"/><path d="M24 74c4-14 14-18 24-18s20 4 24 18"/>
+  </svg>
+  <h1>Área restrita</h1>
+  <p class="lede">Entre com o e-mail e a senha da sua instituição para acompanhar os animais ameaçados.</p>
+  <form id="f" novalidate>
+    <label for="email">Login</label>
+    <input id="email" name="email" type="email" autocomplete="username" required>
+    <label for="senha">Senha</label>
+    <input id="senha" name="senha" type="password" autocomplete="current-password" required>
+    <p class="err" id="err" role="alert" hidden></p>
+    <p class="ok" id="ok" role="status" hidden></p>
+    <button class="btn" type="submit">Entrar</button>
+  </form>
+</main>
+<script>
+(() => {
+  const f = document.getElementById('f'), err = document.getElementById('err'), ok = document.getElementById('ok');
+  const fail = (msg, field) => { ok.hidden = true; err.textContent = msg; err.hidden = false; field.focus(); };
+  f.addEventListener('input', () => { err.hidden = true; ok.hidden = true; });
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = f.email.value.trim(), senha = f.senha.value;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail('Digite um e-mail válido, como nome@instituicao.gov.br.', f.email);
+    if (senha.length < 4) return fail('A senha precisa ter pelo menos 4 caracteres.', f.senha);
+    err.hidden = true;
+    ok.textContent = '';
+    ok.hidden = false;
+    /* Aqui entra a verificação da conta, quando o grupo ligar as partes do projeto. */
+  });
+})();
+</script>
+</body>
+</html>
