@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Espécies em extinção | BIOGUARD</title>
+  <!-- CSS completo desta tela (mesmas cores da tela 1) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#topo">BIOGUARD</a>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav id="menu">
+      <a href="#" data-menu="problema">O problema</a>
+      <a href="#" data-menu="ia">Como a IA ajuda</a>
+      <a href="#especies" data-menu="especies" class="active" aria-current="page">Espécies</a>
+      <a href="#" data-menu="demonstracao">Demonstração</a>
+
+     <a href="pagina_login/index.html" data-menu="login" class="nav-login">Login</a>
+    </nav>
+  </header>
+
+  <main id="topo">
+    <section class="hero">
+      <p class="eyebrow">Fauna ameaçada · Pernambuco</p>
+      <h1>Em risco de extinção</h1>
+      <p class="sub">Conheça quem está desaparecendo.</p>
+      <p class="lead">As principais espécies ameaçadas de extinção em Pernambuco e os motivos específicos do risco que cada uma enfrenta.</p>
+      <a class="btn" href="#especies">Ver as espécies</a>
+    </section>
+
+    <section class="block">
+      <div class="stats" id="stats"></div>
+    </section>
+
+    <section id="especies" class="block">
+      <h2 class="h2">Espécies ameaçadas de extinção</h2>
+      <div class="filters" id="filters" role="group" aria-label="Filtrar por bioma"></div>
+      <div class="grid" id="grid"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <footer class="footer">BIOGUARD · Política pública colaborativa de preservação ambiental</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+                       
