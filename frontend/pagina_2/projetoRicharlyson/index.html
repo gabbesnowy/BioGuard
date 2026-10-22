@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Espécies | BIOGUARD</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#topo">BIOGUARD</a>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav id="menu">
+      <a href="#" data-menu="problema">O problema</a>
+      <a href="#" data-menu="ia">Como a IA ajuda</a>
+      <a href="#mapa" data-menu="mapa">Mapa</a>
+      <a href="#especies" data-menu="especies" class="active" aria-current="page">Espécies</a>
+      <a href="#" data-menu="demonstracao">Demonstração</a>
+    </nav>
+  </header>
+
+  <main id="topo">
+    <section class="hero">
+      <p class="eyebrow">Espécies ameaçadas · Pernambuco</p>
+      <h1>Onde estão os últimos?</h1>
+      <p class="sub">IA a serviço do IBAMA.</p>
+      <p class="lead">As principais espécies ameaçadas de extinção em Pernambuco, os locais com registro de possível ocorrência e os motivos específicos do risco de cada uma.</p>
+      <a class="btn" href="#mapa">Ver o mapa das espécies</a>
+    </section>
+
+    <section id="mapa" class="block">
+      <h2 class="h2">Mapa de Pernambuco</h2>
+      <div class="filters" id="filters" role="group" aria-label="Filtrar por bioma"></div>
+      <div class="mapwrap">
+        <div class="stage" id="stage">
+          <div class="zoom">
+            <button id="zin" aria-label="Aproximar">+</button>
+            <button id="zout" aria-label="Afastar">−</button>
+            <button id="zreset" aria-label="Ver Pernambuco inteiro">⟲</button>
+          </div>
+          <div class="legend"><span><i class="lg pin-lg"></i>Localização cadastrada</span><span><i class="lg mun-lg"></i>Município com registro</span></div>
+          <div id="tip" class="tip" hidden></div>
+        </div>
+        <aside id="panel" class="panel"><p class="hint">Clique em um ponto verde do mapa para ver a espécie, o município e os motivos do risco de extinção.</p></aside>
+      </div>
+      <p class="note" id="placeholder-note" hidden>Localizações aproximadas de possíveis ocorrências cadastradas. O mapa é estático: não mostra monitoramento em tempo real.</p>
+    </section>
+
+    <section class="block">
+      <div class="live">
+        <div class="live-head">
+          <span class="live-tag"><i class="dot"></i>AO VIVO</span>
+          <h2>Informativos</h2>
+          <time id="clock" class="clock"></time>
+        </div>
+        <ul id="news" class="news"></ul>
+      </div>
+    </section>
+
+    <section id="especies" class="block">
+      <h2 class="h2">Espécies ameaçadas cadastradas</h2>
+      <div class="grid" id="grid"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <footer class="footer">BIOGUARD · Política pública colaborativa de preservação ambiental</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
