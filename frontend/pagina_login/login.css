@@ -1,0 +1,29 @@
+/* Mesmas cores e fontes da página informativa */
+:root{
+  --bg:#F2F4EE; --panel:#E6EBE2; --ink:#14231B; --muted:#4E5E54; --line:#C9D2C6;
+  --mata:#1E6A44; --colete:#D9561F; --cr:#C0392B;
+  --f-display:"Anybody","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0D1511; --panel:#15201A; --ink:#E4ECE5; --muted:#9AAAA0; --line:#2A3830;
+  --mata:#4FB37E; --colete:#F07A45; --cr:#E8665A; color-scheme:dark}}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:1rem/1.6 var(--f-body)}
+h1{font-family:var(--f-display);font-size:2rem;font-weight:800;font-stretch:85%;letter-spacing:-.01em;line-height:1.02;margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:3px solid var(--colete);outline-offset:3px}
+
+body.login{min-height:100vh;display:grid;place-items:center;padding:24px}
+.card{width:min(440px,100%);border:2px solid var(--ink);border-radius:36px;padding:40px clamp(24px,6vw,48px);display:flex;flex-direction:column;gap:18px;background:var(--bg)}
+.card .avatar{width:96px;height:96px;align-self:center;color:var(--ink)}
+.card h1{text-align:center}
+.lede{text-align:center;font-size:.95rem;color:var(--muted)}
+form{display:flex;flex-direction:column;gap:6px}
+label{font-weight:600;font-size:.9rem;margin-top:8px}
+input{font:inherit;padding:12px 14px;border-radius:10px;border:1.5px solid var(--ink);background:var(--bg);color:var(--ink)}
+.err{color:var(--cr);font-size:.9rem;margin-top:8px}
+.ok{color:var(--mata);font-size:.9rem;font-weight:600;margin-top:8px}
+[hidden]{display:none!important}
+.btn{font:600 .95rem var(--f-body);margin-top:16px;padding:12px 20px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer}
