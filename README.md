@@ -2,7 +2,7 @@
 
 **Inteligência artificial para ajudar o IBAMA a localizar animais ameaçados de extinção em Pernambuco.**
 
-Projeto acadêmico desenvolvido para apresentação em evento universitário. O site mostra, de forma interativa, como câmeras, gravadores de som, drones e satélites combinados com IA podem indicar onde estão as espécies ameaçadas do estado e onde a fiscalização deve agir primeiro.
+Projeto acadêmico desenvolvido para apresentação no evento IDEATHON. O site mostra de forma interativa, como câmeras, gravadores de som, drones e satélites combinados com IA podem indicar onde estão as espécies ameaçadas do estado e onde a fiscalização deve agir primeiro.
 
 > Projeto conceitual, sem vínculo oficial com o IBAMA ou o ICMBio. O mapa é esquemático e as detecções exibidas são simuladas.
 
@@ -10,9 +10,7 @@ Projeto acadêmico desenvolvido para apresentação em evento universitário. O 
 
 ## Acesse o site
 
-🔗 **https://SEU-USUARIO.github.io/bioguard/**
-
-*(Substitua pelo link do GitHub Pages depois de publicar.)*
+🔗 **https://github.com/gabbesnowy/BioGuard/**
 
 ---
 
@@ -77,22 +75,6 @@ bioguard/
 └── README.md    # este arquivo
 ```
 
-## Como executar
-
-1. Baixe ou clone o repositório:
-   ```bash
-   git clone https://github.com/SEU-USUARIO/bioguard.git
-   ```
-2. Abra o arquivo `index.html` no navegador.
-
-Não é preciso instalar nada. Sem internet, o site funciona normalmente, apenas com as fontes padrão do sistema.
-
-## Limitações e cuidados éticos
-
-- **A IA erra**, principalmente com espécies raras, que têm poucas fotos para treinar os modelos. Toda detecção de espécie ameaçada deve passar por revisão de um especialista.
-- **A localização exata de animais raros é informação sensível.** Se vazar, pode ajudar caçadores e traficantes. Por isso o acesso aos pontos precisos deve ficar restrito às equipes autorizadas.
-- **A IA não substitui** o trabalho de biólogos, analistas e fiscais ambientais: ela ajuda a priorizar onde esse trabalho é mais urgente.
-
 ## Referências
 
 - [SALVE / ICMBio](https://salve.icmbio.gov.br/): Sistema de Avaliação do Risco de Extinção da Biodiversidade
@@ -105,5 +87,5 @@ Não é preciso instalar nada. Sem internet, o site funciona normalmente, apenas
 ## Autor
 
 **Seu Nome**
-Curso · Universidade
+UNINASSAU
 Projeto apresentado em: *nome do evento, 2026*
