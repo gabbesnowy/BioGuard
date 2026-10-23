@@ -1,0 +1,21 @@
+/* ===== animais.html: resumo por categoria e medidor de risco ===== */
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.sum{border:1px solid var(--line);border-top:4px solid var(--c);border-radius:6px;padding:14px 16px;background:var(--panel)}
+.sum b{font-family:var(--f-display);font-weight:900;font-stretch:75%;font-size:2.4rem;line-height:1;display:block;color:var(--c)}
+.sum span{font-size:.85rem;color:var(--muted)}
+.sum.CR{--c:var(--cr)}
+.sum.EN{--c:var(--en)}
+.sum.VU{--c:var(--vu)}
+
+.meter{display:grid;gap:6px}
+.meter .lbl{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.meter .track{height:8px;background:var(--panel);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+.meter .fill{height:100%;border-radius:999px}
+.meter .fill.CR{background:var(--cr)}
+.meter .fill.EN{background:var(--en)}
+.meter .fill.VU{background:var(--vu)}
+
+.risco{font-size:.88rem;border-top:1px dashed var(--line);padding-top:10px}
+.risco b{color:var(--mata)}
+
+@media (max-width:520px){.summary{grid-template-columns:1fr}}
