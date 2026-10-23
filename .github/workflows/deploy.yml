@@ -25,11 +25,13 @@ jobs:
         run: |
           mkdir -p _site/frontend
           mkdir -p _site/extra
-          # Copia o conteúdo da pasta 'frontend' para '_site/frontend'
+          # Copia as pastas
           cp -r frontend/* _site/frontend/ 2>/dev/null || true
-          # Copia o conteúdo da pasta 'extra' para '_site/extra'
           cp -r extra/* _site/extra/ 2>/dev/null || true
-          # Adiciona um arquivo .nojekyll para evitar processamento do Jekyll
+          
+          # Cria uma página inicial simples na raiz com links para os dois
+          echo '<html><head><meta charset="utf-8"><title>BioGuard</title></head><body><h1>BioGuard - Menu</h1><ul><li><a href="./frontend/">Acessar Frontend</a></li><li><a href="./extra/">Acessar Extra</a></li></ul></body></html>' > _site/index.html
+          
           touch _site/.nojekyll
 
       - name: Setup Pages
