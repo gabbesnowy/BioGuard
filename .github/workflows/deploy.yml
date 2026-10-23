@@ -49,7 +49,7 @@ jobs:
           <body>
               <h1>BioGuard</h1>
               <div class="links">
-                  <a href="./frontend/index/">Acessar Frontend</a>
+                  <a href="./frontend/">Acessar Frontend</a>
                   <a href="./extra/">Acessar Extra</a>
               </div>
           </body>
