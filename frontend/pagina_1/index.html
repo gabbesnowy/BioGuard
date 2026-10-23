@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Animais ameaçados do Brasil</title>
+<style>
+  :root{--bg:#f6f4ee;--card:#fff;--text:#1d2a22;--muted:#5d6b62;--border:#ddd8c9;
+        --cr:#c62828;--en:#e65100;--vu:#b78103;--nt:#2e7d32}
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#141916;--card:#1d2420;--text:#e8efe9;--muted:#9aa89f;--border:#33403a;
+          --cr:#ef6b6b;--en:#ff9a5c;--vu:#e8b73d;--nt:#6fcf75}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;line-height:1.5}
+  main{max-width:960px;margin:0 auto;padding:24px 16px 48px}
+  h1{font-size:1.8rem;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 20px}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;align-items:center;}
+  .controls input{flex:1 1 200px;padding:10px;border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--text);font-size:1rem}
+  .filter{padding:8px 14px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--text);cursor:pointer}
+  .filter.active{background:var(--text);color:var(--bg)}
+  
+  /* Estilo do novo botão de Login */
+  .btn-login{padding:10px 16px;border:1px solid var(--border);border-radius:8px;background:var(--text);color:var(--bg);text-decoration:none;font-weight:600;font-size:.95rem;margin-left:auto;display:inline-flex;align-items:center;gap:6px;}
+  .btn-login:hover{opacity:0.8}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--border);border-top:5px solid var(--c);border-radius:14px;padding:16px}
+  .emoji{font-size:2rem}
+  .card h2{font-size:1.15rem;margin:6px 0 0}
+  .sci{font-style:italic;color:var(--muted);font-size:.9rem;margin:0 0 10px}
+  .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.78rem;font-weight:600;color:#fff;background:var(--c)}
+  .row{display:flex;justify-content:space-between;margin:8px 0 4px;font-size:.85rem;color:var(--muted)}
+  .bar{height:8px;background:var(--border);border-radius:99px;overflow:hidden}
+  .bar span{display:block;height:100%;background:var(--c)}
+  .desc{font-size:.9rem;margin:10px 0 0}
+  
+  @media (max-width: 600px) {
+    .btn-login { margin-left: 0; width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Animais ameaçados do Brasil</h1>
+  <p class="sub">Do mais ao menos ameaçado. Use os filtros ou busque pelo nome.</p>
+
+  <div class="controls">
+    <input id="busca" type="search" placeholder="Buscar animal…">
+    <button class="filter active" data-f="TODOS">Todos</button>
+    <button class="filter" data-f="CR">Criticamente em perigo</button>
+    <button class="filter" data-f="EN">Em perigo</button>
+    <button class="filter" data-f="VU">Vulnerável</button>
+    
+    <!-- ============================================== -->
+    <!-- BOTÃO ADICIONADO PARA IR PARA A PÁGINA DE LOGIN -->
+    <!-- ============================================== -->
+    <a href="../pagina_login/index.html" class="btn-login">Área Restrita 🔒</a>
+  </div>
+
+  <div id="lista" class="grid"></div>
+</main>
+
+<script>
+  const NIVEIS = {
+    CR:{nome:"Criticamente em perigo",cor:"var(--cr)",pct:90},
+    EN:{nome:"Em perigo",cor:"var(--en)",pct:70},
+    VU:{nome:"Vulnerável",cor:"var(--vu)",pct:50},
+    NT:{nome:"Quase ameaçada",cor:"var(--nt)",pct:30}
+  };
+
+  const animais = [
+    {nome:"Caburé-de-pernambuco",sci:"Glaucidium mooreorum",emoji:"🦉",iucn:"CR",br:"CR",desc:"Pequena coruja da Mata Atlântica do Nordeste, com poucos indivíduos conhecidos."},
+    {nome:"Choquinha-de-alagoas",sci:"Myrmotherula snowi",emoji:"🐦",iucn:"CR",br:"CR",desc:"Ave que vive em remanescentes de Mata Atlântica em Alagoas e Pernambuco."},
+    {nome:"Macaco-prego-galego",sci:"Sapajus flavius",emoji:"🐒",iucn:"EN",br:"EN",desc:"Primata de pelagem dourada, ameaçado pela perda de floresta e pela caça."},
+    {nome:"Tatu-bola",sci:"Tolypeutes tricinctus",emoji:"🐾",iucn:"EN",br:"EN",desc:"Único tatu capaz de se enrolar em uma bola; vive na Caatinga e no Cerrado."},
+    {nome:"Onça-pintada",sci:"Panthera onca",emoji:"🐆",iucn:"NT",br:"VU",desc:"Maior felino das Américas, afetado pelo desmatamento e pela caça."},
+    {nome:"Peixe-boi-marinho",sci:"Trichechus manatus",emoji:"🌊",iucn:"VU",br:"CR",desc:"Mamífero aquático do litoral Norte e Nordeste, vítima de encalhes e perda de habitat."},
+    {nome:"Tartaruga-de-pente",sci:"Eretmochelys imbricata",emoji:"🐢",iucn:"CR",br:"CR",desc:"Tartaruga marinha ameaçada pela captura de ovos, poluição e perda de áreas de desova."}
+  ];
+
+  let filtro = "TODOS";
+  const lista = document.getElementById("lista");
+  const busca = document.getElementById("busca");
+
+  function render(){
+    const termo = busca.value.trim().toLowerCase();
+    const itens = animais.filter(a =>
+      (filtro === "TODOS" || a.br === filtro) &&
+      (a.nome.toLowerCase().includes(termo) || a.sci.toLowerCase().includes(termo))
+    );
+    itens.sort((x, y) => NIVEIS[y.br].pct - NIVEIS[x.br].pct);
+
+    lista.innerHTML = itens.length ? itens.map(a => {
+      const n = NIVEIS[a.br];
+      return `<article class="card" style="--c:${n.cor}">
+        <div class="emoji">${a.emoji}</div>
+        <h2>${a.nome}</h2>
+        <p class="sci">${a.sci}</p>
+        <span class="badge">${n.nome}</span>
+        <div class="row"><span>Brasil (ICMBio): ${a.br}</span><span>Global (IUCN): ${a.iucn}</span></div>
+        <div class="bar"><span style="width:${n.pct}%"></span></div>
+        <p class="desc">${a.desc}</p>
+      </article>`;
+    }).join("") : "<p>Nenhum animal encontrado.</p>";
+  }
+
+  document.querySelectorAll(".filter").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      filtro = btn.dataset.f;
+      render();
+    });
+  });
+  busca.addEventListener("input", render);
+  render();
+</script>
+</body>
+</html>
