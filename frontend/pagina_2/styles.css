@@ -85,34 +85,7 @@ a{color:inherit;text-decoration:none}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
 .card:hover{border-color:var(--green-d)}
-
-/* ESTILOS DE IMAGEM ATUALIZADOS */
-.thumb {
-  display: block;
-  height: 180px;
-  overflow: hidden;
-  background: #0d1510;
-  border-bottom: 1px solid var(--line);
-}
-.thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
-}
-.card:hover .thumb img {
-  transform: scale(1.05);
-}
-.panel-img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  border: 1px solid var(--line);
-}
-
+.thumb{display:grid;place-items:center;height:110px;font-size:3rem;background:radial-gradient(circle at 50% 60%,#24382c 0,#0d1510 75%);border-bottom:1px solid var(--line)}
 .card-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px}
 .card h3{font-size:1.2rem}
 .sci{color:var(--green);font-style:italic;font-size:.95rem}
@@ -136,7 +109,7 @@ a{color:inherit;text-decoration:none}
 @media(max-width:1180px){
   .nav nav{gap:18px}
   .nav nav>a{font-size:.9rem}
-  .mapwrap{grid-template-columns:1fr 300px}
+    .mapwrap{grid-template-columns:1fr 300px}
 }
 
 @media(max-width:960px){
@@ -145,7 +118,7 @@ a{color:inherit;text-decoration:none}
     padding:8px max(clamp(16px,5vw,56px),env(safe-area-inset-left));max-height:calc(100vh - 64px);max-height:calc(100dvh - 64px);overflow-y:auto}
   .nav nav.open{display:flex}
   .nav nav>a{padding:14px 0;border-bottom:1px solid var(--line);font-size:1rem}
-  .mapwrap{grid-template-columns:1fr}
+    .mapwrap{grid-template-columns:1fr}
   .panel{min-height:0}
   .grid{grid-template-columns:repeat(2,1fr)}
 }
@@ -158,7 +131,7 @@ a{color:inherit;text-decoration:none}
   .live{padding:14px}
   .filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch}
   .chip{flex:0 0 auto}
-  .legend{position:static;flex-direction:row;flex-wrap:wrap;gap:6px 14px;border:0;border-top:1px solid var(--line);border-radius:0;background:var(--bg2)}
+    .legend{position:static;flex-direction:row;flex-wrap:wrap;gap:6px 14px;border:0;border-top:1px solid var(--line);border-radius:0;background:var(--bg2)}
   .zoom{top:8px;right:8px}
   .panel{padding:16px}
 }
