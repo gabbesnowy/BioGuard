@@ -23,14 +23,10 @@ jobs:
 
       - name: Prepare site directory
         run: |
-          mkdir -p _site/frontend
-          mkdir -p _site/extra
-          
-          # Copia o conteúdo das pastas
-          cp -r frontend/* _site/frontend/ 2>/dev/null || true
-          cp -r extra/* _site/extra/ 2>/dev/null || true
-          
-          # Cria a página inicial (Menu) com os links corretos
+          mkdir -p _site/frontend _site/extra
+          cp -r frontend/. _site/frontend/
+          cp -r extra/. _site/extra/
+
           cat << 'EOF' > _site/index.html
           <!DOCTYPE html>
           <html lang="pt-BR">
@@ -41,7 +37,7 @@ jobs:
               <style>
                   body { font-family: system-ui, -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #0d1117; color: #c9d1d9; }
                   h1 { font-size: 2.5rem; margin-bottom: 2rem; }
-                  .links { display: flex; gap: 2rem; }
+                  .links { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
                   a { text-decoration: none; color: white; background-color: #238636; padding: 1rem 2rem; border-radius: 8px; font-weight: bold; transition: background 0.3s; }
                   a:hover { background-color: #2ea043; }
               </style>
@@ -55,8 +51,7 @@ jobs:
           </body>
           </html>
           EOF
-          
-          # Adiciona arquivo para desativar o processamento do Jekyll (opcional, mas evita erros)
+
           touch _site/.nojekyll
 
       - name: Setup Pages
