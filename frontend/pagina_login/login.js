@@ -4,7 +4,7 @@
   const ok   = document.getElementById('ok');
 
   /* ───── Configuração ───── */
-  const DESTINO      = 'painel.html';   // página para onde redirecionar
+  const DESTINO      = '../pagina_2/index.html';   // página para onde redirecionar
   const ATRASO_MS    = 1200;            // tempo mostrando "Entrando..." antes de redirecionar
   const EMAIL_DEMO   = 'admin@bioguard.gov.br';
   const SENHA_DEMO   = '1234';
