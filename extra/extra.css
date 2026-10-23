@@ -1,0 +1,388 @@
+/* =========================================
+   CORES — BIOGUARD
+========================================= */
+
+:root {
+    --bg: #0D1511;
+    --panel: #15201A;
+
+    --texto: #E4ECE5;
+    --texto-fraco: #9AAAA0;
+
+    --linha: #2A3830;
+
+    --verde: #4FB37E;
+    --laranja: #F07A45;
+    --amarelo: #D6B25A;
+}
+
+
+/* =========================================
+   CONFIGURAÇÃO GERAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    background-color: var(--bg);
+    color: var(--texto);
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+header {
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 75px 30px 50px;
+
+    border-bottom: 1px solid var(--linha);
+}
+
+header h1 {
+    max-width: 900px;
+
+    margin: 0;
+
+    color: var(--texto);
+
+    font-family:
+        "Arial Black",
+        Impact,
+        Arial,
+        sans-serif;
+
+    font-size: clamp(3.2rem, 8vw, 6.5rem);
+
+    font-weight: 900;
+
+    line-height: 0.9;
+
+    letter-spacing: -0.04em;
+}
+
+header p {
+    max-width: 650px;
+
+    margin: 28px 0 0;
+
+    color: var(--texto-fraco);
+
+    font-size: 17px;
+}
+
+
+/* =========================================
+   ÁREA DOS ANIMAIS
+========================================= */
+
+.animais {
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 60px 30px 90px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =========================================
+   CARD DO ANIMAL
+========================================= */
+
+.animal-card {
+    min-width: 0;
+
+    overflow: hidden;
+
+    background-color: var(--bg);
+
+    border: 1px solid var(--linha);
+
+    border-radius: 6px;
+
+    transition:
+        border-color 0.25s ease,
+        background-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* Efeito ao passar o mouse */
+
+.animal-card:hover {
+    background-color: var(--panel);
+
+    border-color: var(--verde);
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================================
+   IMAGEM DO ANIMAL
+========================================= */
+
+.animal-imagem {
+    width: 100%;
+
+    height: 280px;
+
+    background-color: var(--panel);
+
+    border-bottom: 1px solid var(--linha);
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Imagens */
+
+.animal-imagem img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.4s ease;
+}
+
+
+/* Zoom suave */
+
+.animal-card:hover .animal-imagem img {
+    transform: scale(1.03);
+}
+
+
+/* =========================================
+   INFORMAÇÕES DO ANIMAL
+========================================= */
+
+.animal-info {
+    padding: 22px 24px 25px;
+}
+
+
+/* Nome do animal */
+
+.animal-info h2 {
+    margin: 0 0 8px;
+
+    color: var(--texto);
+
+    font-family:
+        "Arial Narrow",
+        Arial,
+        sans-serif;
+
+    font-size: 28px;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+}
+
+
+/* Linha verde embaixo do título */
+
+.animal-info h2::after {
+    content: "";
+
+    display: block;
+
+    width: 35px;
+    height: 3px;
+
+    margin-top: 10px;
+
+    background-color: var(--verde);
+}
+
+
+/* Descrição */
+
+.animal-info p {
+    margin: 15px 0 0;
+
+    color: var(--texto-fraco);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   DIFERENCIAÇÃO DOS CARDS
+========================================= */
+
+/* Primeiro card */
+
+.animal-card:nth-child(1) {
+    border-top: 2px solid var(--laranja);
+}
+
+
+/* Segundo card */
+
+.animal-card:nth-child(2) {
+    border-top: 2px solid var(--verde);
+}
+
+
+/* Terceiro card */
+
+.animal-card:nth-child(3) {
+    border-top: 2px solid var(--amarelo);
+}
+
+
+/* Quarto card */
+
+.animal-card:nth-child(4) {
+    border-top: 2px solid var(--verde);
+}
+
+
+/* Quinto card */
+
+.animal-card:nth-child(5) {
+    border-top: 2px solid var(--laranja);
+}
+
+
+/* Sexto card */
+
+.animal-card:nth-child(6) {
+    border-top: 2px solid var(--verde);
+}
+
+
+/* Sétimo card */
+
+.animal-card:nth-child(7) {
+    border-top: 2px solid var(--amarelo);
+}
+
+
+/* =========================================
+   EFEITO DE FOCO
+========================================= */
+
+.animal-card:focus-within {
+    outline: 2px solid var(--verde);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+    header {
+        padding: 60px 25px 45px;
+    }
+
+    header h1 {
+        font-size: 4.5rem;
+    }
+
+    .animais {
+        grid-template-columns: repeat(2, 1fr);
+
+        padding: 45px 25px 70px;
+    }
+
+    .animal-imagem {
+        height: 230px;
+    }
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 50px 20px 40px;
+    }
+
+    header h1 {
+        font-size: 3.2rem;
+
+        letter-spacing: -0.03em;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    .animais {
+        grid-template-columns: 1fr;
+
+        padding: 40px 20px 60px;
+
+        gap: 18px;
+    }
+
+    .animal-imagem {
+        height: 240px;
+    }
+
+    .animal-info {
+        padding: 20px;
+    }
+
+    .animal-info h2 {
+        font-size: 25px;
+    }
+}
+
+
+/* =========================================
+   REDUÇÃO DE ANIMAÇÕES
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}
