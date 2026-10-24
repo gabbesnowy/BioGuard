@@ -10,9 +10,9 @@ Projeto acadêmico desenvolvido para apresentação no evento IDEATHON. O site m
 
 ## Acesse o site
 
-🔗 **https://gabbesnowy.github.io/BioGuard/**
-🔗 **https://gabbesnowy.github.io/BioGuard/frontend/**
-🔗 **https://gabbesnowy.github.io/BioGuard/extra/**
+🔗 ****
+🔗 ****
+🔗 ****
 
 ---
 
