@@ -11,13 +11,13 @@
   border-radius:6px;
   padding:14px 16px;
   background:var(--panel);
-  min-width:0;              /* evita overflow em grids flexíveis */
+  min-width:0;
 }
 .sum b{
   font-family:var(--f-display);
   font-weight:900;
   font-stretch:75%;
-  font-size:clamp(1.8rem, 5vw, 2.4rem); /* escala fluida */
+  font-size:clamp(1.8rem, 5vw, 2.4rem);
   line-height:1;
   display:block;
   color:var(--c);
@@ -38,7 +38,7 @@
   text-transform:uppercase;
   letter-spacing:.06em;
   color:var(--muted);
-  flex-wrap:wrap;           /* quebra em vez de estourar */
+  flex-wrap:wrap;
   min-width:0;
 }
 .meter .lbl > *{min-width:0;overflow-wrap:anywhere}
@@ -57,8 +57,8 @@
 .risco{font-size:.88rem;border-top:1px dashed var(--line);padding-top:10px}
 .risco b{color:var(--mata)}
 
-/* ---- Tablet: 2 colunas, o 3º card ocupa a linha inteira ---- */
-@media (max-width: 760px){
+/* ---- Tablet: mesma faixa do CSS 2 (850px) ---- */
+@media (max-width: 850px){
   .summary{
     grid-template-columns:repeat(2,1fr);
     gap:10px;
@@ -67,17 +67,11 @@
   .summary > .sum:last-child{grid-column:1 / -1}
 }
 
-/* ---- Mobile: 1 coluna ---- */
-@media (max-width: 520px){
+/* ---- Celular: mesma faixa do CSS 2 (600px) ---- */
+@media (max-width: 600px){
   .summary{grid-template-columns:1fr;margin-top:20px}
   .summary > .sum:last-child{grid-column:auto}
   .sum{padding:12px 14px}
   .meter .lbl{font-size:.68rem;letter-spacing:.04em}
   .risco{font-size:.82rem}
-}
-
-/* ---- Telas muito estreitas (~320px) ---- */
-@media (max-width: 360px){
-  .sum{padding:10px 12px}
-  .meter .track{height:6px}
 }
