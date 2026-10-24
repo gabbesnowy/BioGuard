@@ -1,15 +1,54 @@
 /* ===== animais.html: resumo por categoria e medidor de risco ===== */
-.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
-.sum{border:1px solid var(--line);border-top:4px solid var(--c);border-radius:6px;padding:14px 16px;background:var(--panel)}
-.sum b{font-family:var(--f-display);font-weight:900;font-stretch:75%;font-size:2.4rem;line-height:1;display:block;color:var(--c)}
+.summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:28px;
+}
+.sum{
+  border:1px solid var(--line);
+  border-top:4px solid var(--c);
+  border-radius:6px;
+  padding:14px 16px;
+  background:var(--panel);
+  min-width:0;              /* evita overflow em grids flexíveis */
+}
+.sum b{
+  font-family:var(--f-display);
+  font-weight:900;
+  font-stretch:75%;
+  font-size:clamp(1.8rem, 5vw, 2.4rem); /* escala fluida */
+  line-height:1;
+  display:block;
+  color:var(--c);
+}
 .sum span{font-size:.85rem;color:var(--muted)}
 .sum.CR{--c:var(--cr)}
 .sum.EN{--c:var(--en)}
 .sum.VU{--c:var(--vu)}
 
-.meter{display:grid;gap:6px}
-.meter .lbl{display:flex;justify-content:space-between;gap:8px;font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-.meter .track{height:8px;background:var(--panel);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+.meter{display:grid;gap:6px;min-width:0}
+.meter .lbl{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:8px;
+  font-family:var(--f-mono);
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--muted);
+  flex-wrap:wrap;           /* quebra em vez de estourar */
+  min-width:0;
+}
+.meter .lbl > *{min-width:0;overflow-wrap:anywhere}
+.meter .track{
+  height:8px;
+  background:var(--panel);
+  border-radius:999px;
+  overflow:hidden;
+  border:1px solid var(--line);
+}
 .meter .fill{height:100%;border-radius:999px}
 .meter .fill.CR{background:var(--cr)}
 .meter .fill.EN{background:var(--en)}
@@ -18,4 +57,27 @@
 .risco{font-size:.88rem;border-top:1px dashed var(--line);padding-top:10px}
 .risco b{color:var(--mata)}
 
-@media (max-width:520px){.summary{grid-template-columns:1fr}}
+/* ---- Tablet: 2 colunas, o 3º card ocupa a linha inteira ---- */
+@media (max-width: 760px){
+  .summary{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:24px;
+  }
+  .summary > .sum:last-child{grid-column:1 / -1}
+}
+
+/* ---- Mobile: 1 coluna ---- */
+@media (max-width: 520px){
+  .summary{grid-template-columns:1fr;margin-top:20px}
+  .summary > .sum:last-child{grid-column:auto}
+  .sum{padding:12px 14px}
+  .meter .lbl{font-size:.68rem;letter-spacing:.04em}
+  .risco{font-size:.82rem}
+}
+
+/* ---- Telas muito estreitas (~320px) ---- */
+@media (max-width: 360px){
+  .sum{padding:10px 12px}
+  .meter .track{height:6px}
+}
